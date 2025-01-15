@@ -1,0 +1,6 @@
+GET http://localhost:9000/store/products
+x-publishable-api-key: google-play
+###
+
+GET http://localhost:9000/store/products?handle=%2fAdventure%2520Time%2520Run
+x-publishable-api-key: google-play

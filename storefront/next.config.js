@@ -1,4 +1,4 @@
-const checkEnvVariables = require("./check-env-variables")
+import checkEnvVariables from "./check-env-variables"
 
 checkEnvVariables()
 
@@ -11,7 +11,12 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    dangerouslyAllowSVG: true,
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
       {
         protocol: "http",
         hostname: "localhost",
@@ -36,4 +41,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+export default nextConfig

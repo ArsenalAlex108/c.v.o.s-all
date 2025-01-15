@@ -4,6 +4,13 @@ import { HttpTypes } from "@medusajs/types"
 import { Heading } from "@medusajs/ui"
 import Product from "../product-preview"
 
+import { sdk } from "@lib/config"
+import { sortProducts } from "@lib/util/sort-products"
+import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import { getAuthHeaders, getCacheOptions } from "@lib/data/cookies"
+import fetch from 'node-fetch'
+import fs from 'fs'
+
 type RelatedProductsProps = {
   product: HttpTypes.StoreProduct
   countryCode: string
@@ -49,13 +56,54 @@ export default async function RelatedProducts({
     return null
   }
 
+  if (!product.variants || product.variants.length === 0) {
+    return null;
+  }
+
+  const variantIdsResponse = 
+  (await fetch(`http://localhost:5171/api/contentbasedvector/neighbors?`
+  + `\nvariantId=${encodeURIComponent(product.variants[0].id)}`
+  + `\n&count=12`
+  + `\n&distance=true`));
+
+  //fs.appendFileSync("debug.log", JSON.stringify(variantIdsResponse) + "\n");
+
+  const variantIds = await variantIdsResponse.json() as { id: string, distance: number }[];
+
+  //fs.appendFileSync("debug.log", JSON.stringify(variantIds) + "\n");
+
+  const headers = {
+    ...(await getAuthHeaders()),
+  }
+
+  const next = {
+    ...(await getCacheOptions("products")),
+  }
+
+  const neighborProducts = await Promise.all(variantIds
+  .sort((a, b) => -(a.distance - b.distance))
+  .map((i) => i.id)
+  .map(async (i) => (await sdk.client
+  .fetch<{ product: HttpTypes.StoreProduct }>(
+    `/store/products/${i}`,
+    {
+      credentials: "include",
+      method: "GET",
+      headers,
+      next,
+      cache: "force-cache",
+    }
+  )).product));
+
+  //fs.appendFileSync("debug.log", JSON.stringify(neighborProducts) + "\n");
+
   return (
     <div className="flex flex-col gap-y-6 small:py-16 py-6 small:px-24 px-6 bg-neutral-100">
       <Heading level="h2" className="text-xl text-neutral-950 font-normal">
         Other customers also viewed
       </Heading>
       <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-2 gap-y-8">
-        {products.map((product) => (
+        {neighborProducts.map((product) => (
           <li key={product.id}>
             <Product region={region} product={product} />
           </li>
