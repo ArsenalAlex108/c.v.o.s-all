@@ -61,10 +61,10 @@ export default async function RelatedProducts({
   }
 
   const variantIdsResponse = 
-  (await fetch(`http://localhost:5171/api/contentbasedvector/neighbors?`
+  (await fetch(`http://localhost:5000/api/contentbasedvector/neighbors?`
   + `\nvariantId=${encodeURIComponent(product.variants[0].id)}`
   + `\n&count=12`
-  + `\n&distance=true`));
+  + `\n&distance=false`));
 
   //fs.appendFileSync("debug.log", JSON.stringify(variantIdsResponse) + "\n");
 
@@ -81,7 +81,7 @@ export default async function RelatedProducts({
   }
 
   const neighborProducts = await Promise.all(variantIds
-  .sort((a, b) => -(a.distance - b.distance))
+  //.sort((a, b) => (a?.distance ?? 0 - b?.distance ?? 0))
   .map((i) => i.id)
   .map(async (i) => (await sdk.client
   .fetch<{ product: HttpTypes.StoreProduct }>(

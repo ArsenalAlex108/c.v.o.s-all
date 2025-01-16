@@ -1,4 +1,4 @@
-import checkEnvVariables from "./check-env-variables"
+const checkEnvVariables = require("./check-env-variables")
 
 checkEnvVariables()
 
@@ -41,4 +41,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+module.exports = nextConfig
