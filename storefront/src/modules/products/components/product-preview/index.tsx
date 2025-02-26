@@ -6,8 +6,6 @@ import Thumbnail from "../thumbnail"
 import PreviewAddToCart from "./preview-add-to-cart"
 import PreviewPrice from "./price"
 
-import fs from 'fs'
-
 export default async function ProductPreview({
   product,
   isFeatured,
@@ -21,8 +19,6 @@ export default async function ProductPreview({
     return null
   }
 
-  //fs.appendFileSync('debug.log', `ProductPreview: ${JSON.stringify(product)}\n`)
-
   const { cheapestPrice } = getProductPrice({
     product,
   })
@@ -32,7 +28,7 @@ export default async function ProductPreview({
   }, 0)
 
   return (
-    <LocalizedClientLink href={`/products/${product.handle}` } className="group">
+    <LocalizedClientLink href={`/products/${product.handle}`} className="group">
       <div
         data-testid="product-wrapper"
         className="flex flex-col gap-4 relative aspect-[3/5] w-full overflow-hidden p-4 bg-white shadow-borders-base rounded-lg group-hover:shadow-[0_0_0_4px_rgba(0,0,0,0.1)] transition-shadow ease-in-out duration-150"

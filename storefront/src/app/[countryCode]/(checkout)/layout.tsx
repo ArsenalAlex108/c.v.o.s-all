@@ -1,6 +1,6 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ChevronDown from "@modules/common/icons/chevron-down"
-import LogoIcon from "@modules/common/icons/logo"
+import LogoIcon from "@modules/common/icons/_logo"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
 
 export default function CheckoutLayout({
@@ -13,9 +13,9 @@ export default function CheckoutLayout({
       <div className="h-16 bg-white">
         <nav className="flex h-full items-center content-container justify-between">
           <LocalizedClientLink className="hover:text-ui-fg-base" href="/">
-            <h1 className="text-base font-medium flex items-center">
+            <h1 className="text-base font-medium flex items-center gap-1">
               <LogoIcon className="inline mr-2" />
-              Medusa B2B Starter
+              C.V.O.S
             </h1>
           </LocalizedClientLink>
         </nav>

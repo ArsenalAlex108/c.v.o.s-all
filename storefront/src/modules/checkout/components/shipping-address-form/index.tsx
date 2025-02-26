@@ -113,17 +113,17 @@ const ShippingAddressForm = ({
           onChange={handleChange}
           required
           data-testid="shipping-last-name-input"
-        />        
-        <Input
-            label="Phone"
-            name="shipping_address.phone"
-            autoComplete="tel"
-            value={formData["shipping_address.phone"]}
-            onChange={handleChange}
-            required
-            data-testid="shipping-phone-input"
         />
         <Input
+          label="Phone"
+          name="shipping_address.phone"
+          autoComplete="tel"
+          value={formData["shipping_address.phone"]}
+          onChange={handleChange}
+          required
+          data-testid="shipping-phone-input"
+        />
+        {/* <Input
           label="Company name"
           name="shipping_address.company"
           value={formData["shipping_address.company"]}
@@ -132,7 +132,7 @@ const ShippingAddressForm = ({
           autoComplete="organization"
           data-testid="shipping-company-input"
           colSpan={2}
-        />
+        /> */}
         <Input
           label="Address"
           name="shipping_address.address_1"

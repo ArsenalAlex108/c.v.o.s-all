@@ -1,3 +1,4 @@
+import { REVIEW_MODULE } from "./src/modules/review";
 import { QUOTE_MODULE } from "./src/modules/quote";
 import { loadEnv, defineConfig, Modules } from "@medusajs/framework/utils";
 
@@ -20,6 +21,9 @@ module.exports = defineConfig({
     },
     [QUOTE_MODULE]: {
       resolve: "./modules/quote",
+    },
+    [REVIEW_MODULE]: {
+      resolve: "./modules/review",
     },
     [Modules.CACHE]: {
       resolve: "@medusajs/medusa/cache-inmemory",

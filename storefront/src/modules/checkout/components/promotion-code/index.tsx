@@ -16,7 +16,7 @@ type PromotionCodeProps = {
 }
 
 const PromotionCode: React.FC<PromotionCodeProps> = ({ cart }) => {
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState(true)
   const pathname = usePathname()
 
   const isCheckout = pathname.includes("/checkout")
@@ -57,7 +57,7 @@ const PromotionCode: React.FC<PromotionCodeProps> = ({ cart }) => {
     <div className="w-full bg-white flex flex-col">
       <div className="txt-medium">
         {!isCheckout && (
-          <form action={(a) => addPromotionCode(a)} className="w-full mb-5">
+          <form action={(a) => addPromotionCode(a)} className="w-full mb-1">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
@@ -122,17 +122,17 @@ const PromotionCode: React.FC<PromotionCodeProps> = ({ cart }) => {
                         (
                         {promotion.application_method?.value !== undefined &&
                           promotion.application_method.currency_code !==
-                            undefined && (
+                          undefined && (
                             <>
                               {promotion.application_method.type ===
-                              "percentage"
+                                "percentage"
                                 ? `${promotion.application_method.value}%`
                                 : convertToLocale({
-                                    amount: promotion.application_method.value,
-                                    currency_code:
-                                      promotion.application_method
-                                        .currency_code,
-                                  })}
+                                  amount: promotion.application_method.value,
+                                  currency_code:
+                                    promotion.application_method
+                                      .currency_code,
+                                })}
                             </>
                           )}
                         )

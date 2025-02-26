@@ -10,7 +10,8 @@ import { B2BCart } from "types/global"
 
 const CheckoutSummary = async ({ cart }: { cart: B2BCart }) => {
   const customer = await retrieveCustomer()
-  const spendLimitExceeded = checkSpendingLimit(cart, customer)
+  const spendLimitExceeded = false
+  // const spendLimitExceeded = checkSpendingLimit(cart, customer)
 
   return (
     <Container className="sticky top-2 h-fit w-full flex flex-col small:mt-10">

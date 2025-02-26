@@ -47,10 +47,11 @@ const CartDrawer = ({
 
   const subtotal = useMemo(() => cart?.item_subtotal ?? 0, [cart])
 
-  const spendLimitExceeded = useMemo(
-    () => checkSpendingLimit(cart, customer),
-    [cart, customer]
-  )
+  // const spendLimitExceeded = useMemo(
+  //   () => checkSpendingLimit(cart, customer),
+  //   [cart, customer]
+  // )
+  const spendLimitExceeded = false
 
   const itemRef = useRef<number>(totalItems || 0)
 
@@ -127,9 +128,9 @@ const CartDrawer = ({
             <span className="text-sm font-normal hidden small:inline-block">
               {cart && items && items.length > 0
                 ? convertToLocale({
-                    amount: subtotal,
-                    currency_code: cart.currency_code,
-                  })
+                  amount: subtotal,
+                  currency_code: cart.currency_code,
+                })
                 : "Cart"}
             </span>
             <div className="bg-blue-500 text-white text-xs px-1.5 py-px rounded-full">

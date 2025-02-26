@@ -11,12 +11,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    dangerouslyAllowSVG: true,
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "placehold.co",
-      },
       {
         protocol: "http",
         hostname: "localhost",
@@ -36,6 +31,14 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "github.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cms-assets.xboxservices.com",
+      },
+      {
+        protocol: "https",
+        hostname: "store-images.s-microsoft.com",
       },
     ],
   },

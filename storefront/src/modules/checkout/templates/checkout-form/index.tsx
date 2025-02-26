@@ -46,7 +46,7 @@ export default async function CheckoutForm({
 
         {!customer ? <SignInPrompt /> : null}
 
-        {cart?.company && <Company cart={cart} />}
+        {/* {cart?.company && <Company cart={cart} />} */}
 
         <ShippingAddress cart={cart} customer={customer} />
 

@@ -25,3 +25,6 @@ build
 !.yarn/versions
 
 .medusa
+
+static/companies
+static/quotes

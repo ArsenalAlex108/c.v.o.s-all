@@ -1,6 +1,6 @@
 "use client"
 
-import { Github } from "@medusajs/icons"
+import { ArrowUpRightMini, Github } from "@medusajs/icons"
 import { Heading } from "@medusajs/ui"
 import Button from "@modules/common/components/button"
 import Image from "next/image"
@@ -25,20 +25,20 @@ const Hero = () => {
             level="h1"
             className="text-6xl leading-10 text-ui-fg-base font-normal mt-10 mb-5"
           >
-            Portable Bestsellers
+            Gaming Bestsellers
           </Heading>
 
           <p className="leading-10 text-ui-fg-subtle font-normal text-lg">
-            See our widest selection of electronics
+            See our widest selection of gaming gears and video games
           </p>
         </span>
         <a
-          href="https://github.com/medusajs/nextjs-starter-medusa"
-          target="_blank"
+          href=""
+          target=""
         >
           <Button variant="secondary" className="rounded-2xl">
-            <Github />
-            Github Repository
+            Shop now
+            <ArrowUpRightMini color="black" className="group-hover:text-ui-fg-interactive-hover inline text-ui-fg-interactive" />
           </Button>
         </a>
       </div>

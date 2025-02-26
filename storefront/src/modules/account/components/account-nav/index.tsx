@@ -156,7 +156,7 @@ const AccountNav = ({ customer }: { customer: B2BCustomer | null }) => {
                 Profile
               </AccountNavLink>
             </li>
-            <li>
+            {/* <li>
               <AccountNavLink
                 href="/account/company"
                 route={route!}
@@ -164,7 +164,7 @@ const AccountNav = ({ customer }: { customer: B2BCustomer | null }) => {
               >
                 Company
               </AccountNavLink>
-            </li>
+            </li> */}
             <li>
               <AccountNavLink
                 href="/account/addresses"
@@ -183,7 +183,7 @@ const AccountNav = ({ customer }: { customer: B2BCustomer | null }) => {
                 Orders
               </AccountNavLink>
             </li>
-            <li>
+            {/* <li>
               <AccountNavLink
                 href="/account/quotes"
                 route={route!}
@@ -191,7 +191,7 @@ const AccountNav = ({ customer }: { customer: B2BCustomer | null }) => {
               >
                 Quotes
               </AccountNavLink>
-            </li>
+            </li> */}
             <li className="text-neutral-400 hover:text-neutral-950">
               <button
                 type="button"
